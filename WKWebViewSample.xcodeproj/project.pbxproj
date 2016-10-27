@@ -12,6 +12,9 @@
 		5EF38A4A1DC0B488001F341A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EF38A481DC0B488001F341A /* Main.storyboard */; };
 		5EF38A4C1DC0B488001F341A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EF38A4B1DC0B488001F341A /* Assets.xcassets */; };
 		5EF38A4F1DC0B488001F341A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EF38A4D1DC0B488001F341A /* LaunchScreen.storyboard */; };
+		5EF38A571DC0B531001F341A /* KMZUIWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF38A561DC0B531001F341A /* KMZUIWebViewController.swift */; };
+		5EF38A591DC0B53A001F341A /* KMZWKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF38A581DC0B53A001F341A /* KMZWKWebViewController.swift */; };
+		5EF38A5B1DC1AD40001F341A /* KMZCookie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF38A5A1DC1AD40001F341A /* KMZCookie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		5EF38A4B1DC0B488001F341A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5EF38A4E1DC0B488001F341A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5EF38A501DC0B488001F341A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5EF38A561DC0B531001F341A /* KMZUIWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMZUIWebViewController.swift; sourceTree = "<group>"; };
+		5EF38A581DC0B53A001F341A /* KMZWKWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMZWKWebViewController.swift; sourceTree = "<group>"; };
+		5EF38A5A1DC1AD40001F341A /* KMZCookie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMZCookie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +63,9 @@
 				5EF38A441DC0B488001F341A /* AppDelegate.swift */,
 				5EF38A461DC0B488001F341A /* ViewController.swift */,
 				5EF38A481DC0B488001F341A /* Main.storyboard */,
+				5EF38A561DC0B531001F341A /* KMZUIWebViewController.swift */,
+				5EF38A581DC0B53A001F341A /* KMZWKWebViewController.swift */,
+				5EF38A5A1DC1AD40001F341A /* KMZCookie.swift */,
 				5EF38A4B1DC0B488001F341A /* Assets.xcassets */,
 				5EF38A4D1DC0B488001F341A /* LaunchScreen.storyboard */,
 				5EF38A501DC0B488001F341A /* Info.plist */,
@@ -96,6 +105,7 @@
 				TargetAttributes = {
 					5EF38A401DC0B488001F341A = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = MVRUT54B38;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -136,6 +146,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EF38A591DC0B53A001F341A /* KMZWKWebViewController.swift in Sources */,
+				5EF38A5B1DC1AD40001F341A /* KMZCookie.swift in Sources */,
+				5EF38A571DC0B531001F341A /* KMZUIWebViewController.swift in Sources */,
 				5EF38A471DC0B488001F341A /* ViewController.swift in Sources */,
 				5EF38A451DC0B488001F341A /* AppDelegate.swift in Sources */,
 			);
@@ -260,6 +273,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = MVRUT54B38;
 				INFOPLIST_FILE = WKWebViewSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.kenmaz.WKWebViewSample;
@@ -272,6 +286,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = MVRUT54B38;
 				INFOPLIST_FILE = WKWebViewSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.kenmaz.WKWebViewSample;
