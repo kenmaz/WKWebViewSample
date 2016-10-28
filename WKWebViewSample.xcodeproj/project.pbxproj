@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E8DAC551DC2DFCC00998345 /* KMZWKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8DAC541DC2DFCC00998345 /* KMZWKWebView.swift */; };
+		5E8DAC571DC2E22800998345 /* KMZResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8DAC561DC2E22800998345 /* KMZResources.swift */; };
 		5EF38A451DC0B488001F341A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF38A441DC0B488001F341A /* AppDelegate.swift */; };
 		5EF38A471DC0B488001F341A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF38A461DC0B488001F341A /* ViewController.swift */; };
 		5EF38A4A1DC0B488001F341A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EF38A481DC0B488001F341A /* Main.storyboard */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E8DAC541DC2DFCC00998345 /* KMZWKWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMZWKWebView.swift; sourceTree = "<group>"; };
+		5E8DAC561DC2E22800998345 /* KMZResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMZResources.swift; sourceTree = "<group>"; };
 		5EF38A411DC0B488001F341A /* WKWebViewSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WKWebViewSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF38A441DC0B488001F341A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EF38A461DC0B488001F341A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,8 +67,10 @@
 				5EF38A441DC0B488001F341A /* AppDelegate.swift */,
 				5EF38A461DC0B488001F341A /* ViewController.swift */,
 				5EF38A481DC0B488001F341A /* Main.storyboard */,
+				5E8DAC561DC2E22800998345 /* KMZResources.swift */,
 				5EF38A561DC0B531001F341A /* KMZUIWebViewController.swift */,
 				5EF38A581DC0B53A001F341A /* KMZWKWebViewController.swift */,
+				5E8DAC541DC2DFCC00998345 /* KMZWKWebView.swift */,
 				5EF38A5A1DC1AD40001F341A /* KMZCookie.swift */,
 				5EF38A4B1DC0B488001F341A /* Assets.xcassets */,
 				5EF38A4D1DC0B488001F341A /* LaunchScreen.storyboard */,
@@ -150,6 +156,8 @@
 				5EF38A5B1DC1AD40001F341A /* KMZCookie.swift in Sources */,
 				5EF38A571DC0B531001F341A /* KMZUIWebViewController.swift in Sources */,
 				5EF38A471DC0B488001F341A /* ViewController.swift in Sources */,
+				5E8DAC551DC2DFCC00998345 /* KMZWKWebView.swift in Sources */,
+				5E8DAC571DC2E22800998345 /* KMZResources.swift in Sources */,
 				5EF38A451DC0B488001F341A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,6 +322,7 @@
 				5EF38A551DC0B488001F341A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

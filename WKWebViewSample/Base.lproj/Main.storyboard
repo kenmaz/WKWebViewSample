@@ -6,6 +6,23 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--UIWebView-->
+        <scene sceneID="83b-dc-tEV">
+            <objects>
+                <navigationController id="pnn-8r-ZBV" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="UIWebView" id="qTl-F4-12s"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="l0I-vj-FCD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="i28-Qq-dUi" kind="relationship" relationship="rootViewController" id="GHe-55-MnE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ox4-J8-eAk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1118" y="-289"/>
+        </scene>
         <!--WK-->
         <scene sceneID="6fF-JM-vX1">
             <objects>
@@ -67,7 +84,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EwC-M4-5Mn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1117.5999999999999" y="393.55322338830587"/>
+            <point key="canvasLocation" x="2040.8" y="442.12893553223392"/>
+        </scene>
+        <!--WKWebView-->
+        <scene sceneID="Fu7-mQ-JCt">
+            <objects>
+                <navigationController id="tEB-fE-8Wv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="WKWebView" id="VGJ-us-nfV"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vDe-Fi-iug">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="pjQ-bK-G1j" kind="relationship" relationship="rootViewController" id="Ln6-1e-JLB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JXe-BP-5bm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1118" y="418"/>
         </scene>
         <!--UIWebView-->
         <scene sceneID="CSZ-tr-srd">
@@ -98,6 +132,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DXa-Wo-uto">
                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="urls"/>
+                                <connections>
+                                    <action selector="urlButtonDidTapped:" destination="i28-Qq-dUi" eventType="touchUpInside" id="dEl-09-Cs4"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vm2-Dy-3H9">
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -120,10 +157,11 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="UI" id="8d2-SG-Nun" userLabel="UIWebView"/>
+                    <navigationItem key="navigationItem" id="1Hg-mc-VJb"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qbI-df-vmC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1118" y="-299"/>
+            <point key="canvasLocation" x="1999" y="-289"/>
         </scene>
         <!--UIWebView-->
         <scene sceneID="mbL-Oi-F7x">
@@ -135,8 +173,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="pjQ-bK-G1j" kind="relationship" relationship="viewControllers" id="qHG-fy-8Jt"/>
-                        <segue destination="i28-Qq-dUi" kind="relationship" relationship="viewControllers" id="bn2-Z9-oC2"/>
+                        <segue destination="pnn-8r-ZBV" kind="relationship" relationship="viewControllers" id="0bI-lu-bwf"/>
+                        <segue destination="tEB-fE-8Wv" kind="relationship" relationship="viewControllers" id="KWK-Qf-QKb"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ge-Pb-caA" userLabel="First Responder" sceneMemberID="firstResponder"/>

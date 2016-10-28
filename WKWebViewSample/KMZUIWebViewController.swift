@@ -14,10 +14,19 @@ final class KMZUIWebViewController: UIViewController {
         let webView = UIWebView()
         webView.translatesAutoresizingMaskIntoConstraints = false
         webView.delegate = self
+        webView.addGestureRecognizer(self.swipeBackGesture)
         self.view.addSubview(webView)
         self.view.sendSubview(toBack: webView)
         return webView
     }()
+    
+    lazy var swipeBackGesture:UISwipeGestureRecognizer = {
+        let ges = UISwipeGestureRecognizer(target: self, action: #selector(swipeBack))
+        ges.direction = .right
+        return ges
+    }()
+    
+    var timer:DispatchSourceTimer?
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -29,7 +38,31 @@ final class KMZUIWebViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        webView.loadRequest(URLRequest(url: URL(string: "http://sakura.kenmaz.net/tmp/cookie.php")!))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .rewind, target: self, action: #selector(backButtonDidTapped))
+        updateBackButtonStatus()
+        
+        webView.loadRequest(URLRequest(url: KMZResources.urls.first!))
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        startBackButtonObserver()
+    }
+    
+    func startBackButtonObserver() {
+        if timer == nil {
+            timer = DispatchSource.makeTimerSource(flags: [], queue: DispatchQueue.main)
+            timer?.scheduleRepeating(deadline: .now(), interval: .seconds(1))
+            timer?.setEventHandler { self.updateBackButtonStatus() }
+            timer?.resume()
+        }
+    }
+    
+    @IBAction func urlButtonDidTapped(_ sender: AnyObject) {
+        let con = KMZResources.alertViewController {
+            self.webView.loadRequest(URLRequest(url: $0))
+        }
+        present(con, animated: true, completion: nil)
     }
     
     @IBAction func backButtonDidTapped(_ sender: AnyObject) {
@@ -45,9 +78,25 @@ final class KMZUIWebViewController: UIViewController {
     @IBAction func clearButtonDidTapped(_ sender: AnyObject) {
         KMZCookie.clearCookies()
     }
+    
+    func swipeBack(sender:Any) {
+        if webView.canGoBack {
+            webView.goBack()
+        }
+    }
+    
+    func updateBackButtonStatus() {
+        print("update back button..")
+        navigationItem.leftBarButtonItem?.isEnabled = webView.canGoBack
+    }
 }
 
 extension KMZUIWebViewController: UIWebViewDelegate {
+    
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        print(#function)
+        return true
+    }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         print("start")
