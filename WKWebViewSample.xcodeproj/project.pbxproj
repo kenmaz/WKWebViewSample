@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E43F89C1DC8312D0052B370 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E43F89B1DC8312D0052B370 /* WebKit.framework */; };
 		5E8DAC551DC2DFCC00998345 /* KMZWKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8DAC541DC2DFCC00998345 /* KMZWKWebView.swift */; };
 		5E8DAC571DC2E22800998345 /* KMZResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8DAC561DC2E22800998345 /* KMZResources.swift */; };
 		5EF38A451DC0B488001F341A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF38A441DC0B488001F341A /* AppDelegate.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E43F89B1DC8312D0052B370 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		5E8DAC541DC2DFCC00998345 /* KMZWKWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMZWKWebView.swift; sourceTree = "<group>"; };
 		5E8DAC561DC2E22800998345 /* KMZResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMZResources.swift; sourceTree = "<group>"; };
 		5EF38A411DC0B488001F341A /* WKWebViewSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WKWebViewSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,17 +41,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E43F89C1DC8312D0052B370 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E43F89A1DC8312D0052B370 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5E43F89B1DC8312D0052B370 /* WebKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5EF38A381DC0B488001F341A = {
 			isa = PBXGroup;
 			children = (
 				5EF38A431DC0B488001F341A /* WKWebViewSample */,
 				5EF38A421DC0B488001F341A /* Products */,
+				5E43F89A1DC8312D0052B370 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,7 +118,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Kentaro Matsumae";
 				TargetAttributes = {
 					5EF38A401DC0B488001F341A = {
@@ -202,6 +214,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -252,6 +265,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

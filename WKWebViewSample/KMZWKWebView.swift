@@ -9,6 +9,3 @@
 import Foundation
 import WebKit
 
-class KMZWKWebView: WKWebView {
-    
-}

@@ -14,6 +14,15 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        if let cookie = HTTPCookie(properties: [
+            HTTPCookiePropertyKey.name: "key",
+            HTTPCookiePropertyKey.value: "hoge",
+            HTTPCookiePropertyKey.domain: "sakura.kenmaz.net",
+            HTTPCookiePropertyKey.path: "/",
+            HTTPCookiePropertyKey.expires: Date.distantFuture,
+            ]) {
+            HTTPCookieStorage.shared.setCookie(cookie)
+        }
         
     }
 

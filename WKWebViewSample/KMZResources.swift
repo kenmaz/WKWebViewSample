@@ -11,9 +11,9 @@ import UIKit
 struct KMZResources {
     
     static let urls = [
+        URL(string: "http://sakura.kenmaz.net/tmp/index.php")!,
         URL(string: "https://www.mangabox.me/browser/store/#/")!,
         URL(string: "http://anime.kenmaz.net/")!,
-        URL(string: "http://sakura.kenmaz.net/tmp/cookie.php")!,
         URL(string: "https://twitter.com")!,
         URL(string: "https://dena.com/jp/")!,
         URL(string: "http://www.yahoo.co.jp")!,

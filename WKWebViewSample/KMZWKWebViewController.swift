@@ -11,13 +11,20 @@ import WebKit
 
 final class KMZWKWebViewController: UIViewController {
     
+    static let configuration = WKWebViewConfiguration()
+    
     @IBOutlet weak var backButton: UIButton!
     
     lazy var webView:WKWebView = {
-        let webView = WKWebView()
+        
+        //let con = self.setupUserContentController(url: nil)
+        //configuration.userContentController = con
+        
+        let webView = WKWebView(frame: CGRect.zero, configuration: configuration)
         webView.allowsBackForwardNavigationGestures = true
         webView.translatesAutoresizingMaskIntoConstraints = false
         webView.navigationDelegate = self
+        webView.uiDelegate = self
         self.view.addSubview(webView)
         self.view.sendSubview(toBack: webView)
         webView.addObserver(self, forKeyPath: "canGoBack", options: .new, context: nil)
@@ -39,9 +46,28 @@ final class KMZWKWebViewController: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .rewind, target: self, action: #selector(backButtonDidTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(close))
         updateBackButtonStatus()
         
-        webView.load(URLRequest(url: KMZResources.urls.first!))
+        let url = KMZResources.urls.first!
+        webView.load(URLRequest(url: url))
+        
+        //loadWebViewWithCookies(url: url)
+    }
+    
+    func loadWebViewWithCookies(url:URL) {
+        
+        let req = NSMutableURLRequest(url: url)
+        
+        if let cookies = HTTPCookieStorage.shared.cookies(for: url) {
+            req.allHTTPHeaderFields = HTTPCookie.requestHeaderFields(with: cookies)
+        }
+        
+        let con = setupUserContentController(url: url)
+        let config = webView.configuration
+        config.userContentController = con
+        
+        webView.load(req as URLRequest)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,6 +76,10 @@ final class KMZWKWebViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    func close(sender:AnyObject) {
+        dismiss(animated: true, completion: nil)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -87,6 +117,10 @@ final class KMZWKWebViewController: UIViewController {
 
     @IBAction func reload(_ sender:AnyObject) {
         webView.reload()
+        
+        //if let url = webView.url {
+        //    loadWebViewWithCookies(url: url)
+        //}
     }
     
     @IBAction func clearCache(_ sender:AnyObject) {
@@ -123,12 +157,54 @@ extension KMZWKWebViewController:WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Swift.Void) {
         print(#function)
+        print(navigationAction.request.url ?? "-")
+
+        //let con = setupUserContentController(url: navigationAction.request.url!)
+        //let config = webView.configuration
+        //config.userContentController = con
+        
         decisionHandler(.allow)
     }
     
     
+    func setupUserContentController(url:URL?) -> WKUserContentController {
+        let con = WKUserContentController()
+        
+        if let url = url, let cookies = HTTPCookieStorage.shared.cookies(for: url) {
+            cookies.forEach {
+                let name = $0.name
+                let val = $0.value
+                let js = "document.cookie = '\(name)=\(val)'"
+                let script = WKUserScript(source: js, injectionTime: .atDocumentStart, forMainFrameOnly: false)
+                con.addUserScript(script)
+            }
+        }
+        
+        con.addUserScript(WKUserScript(source: "alert(document.cookie)", injectionTime: .atDocumentStart, forMainFrameOnly: false))
+        con.addUserScript(WKUserScript(source: "console.log(1)", injectionTime: .atDocumentStart, forMainFrameOnly: false))
+        return con
+    }
+    
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Swift.Void) {
         print(#function)
+        
+        guard
+            let response = navigationResponse.response as? HTTPURLResponse,
+            let headers = response.allHeaderFields as? [String:String],
+            let url = response.url else {
+                decisionHandler(.cancel)
+                return
+        }
+
+        let cookies = HTTPCookie.cookies(withResponseHeaderFields: headers, for: url)
+        HTTPCookieStorage.shared.setCookies(cookies, for: url, mainDocumentURL: nil)
+        
+        if let mjt = (navigationResponse.response as? HTTPURLResponse)?.allHeaderFields["X-MJT"] {
+            print("mjt = \(mjt)")
+        } else {
+            print("no mjt")
+        }
+        
         decisionHandler(.allow)
     }
 
@@ -146,5 +222,12 @@ extension KMZWKWebViewController:WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         print(#function)
+    }
+}
+
+extension KMZWKWebViewController:WKUIDelegate {
+    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Swift.Void) {
+        print(message)
+        completionHandler()
     }
 }

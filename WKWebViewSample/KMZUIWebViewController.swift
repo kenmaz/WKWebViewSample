@@ -39,6 +39,7 @@ final class KMZUIWebViewController: UIViewController {
     
     override func viewDidLoad() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .rewind, target: self, action: #selector(backButtonDidTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(close))
         updateBackButtonStatus()
         
         webView.loadRequest(URLRequest(url: KMZResources.urls.first!))
@@ -49,12 +50,28 @@ final class KMZUIWebViewController: UIViewController {
         startBackButtonObserver()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopBackButtonObserver()
+    }
+    
+    func close(sender:AnyObject) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     func startBackButtonObserver() {
         if timer == nil {
             timer = DispatchSource.makeTimerSource(flags: [], queue: DispatchQueue.main)
             timer?.scheduleRepeating(deadline: .now(), interval: .seconds(1))
             timer?.setEventHandler { self.updateBackButtonStatus() }
             timer?.resume()
+        }
+    }
+    
+    func stopBackButtonObserver() {
+        if timer != nil {
+            timer?.cancel()
+            timer = nil
         }
     }
     
