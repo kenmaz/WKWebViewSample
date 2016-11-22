@@ -56,6 +56,7 @@ final class KMZUIWebViewController: UIViewController {
     }
     
     func close(sender:AnyObject) {
+        KMZCookie.clearCookies()
         dismiss(animated: true, completion: nil)
     }
     
@@ -112,6 +113,12 @@ extension KMZUIWebViewController: UIWebViewDelegate {
     
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         print(#function)
+        
+        if let url = request.url?.absoluteString, url == "webviewsample://show_wkwebview", let vcs = tabBarController?.viewControllers {
+            let target = tabBarController!.selectedIndex + 1 % 2
+            tabBarController?.selectedIndex = target
+            return false
+        }
         return true
     }
     

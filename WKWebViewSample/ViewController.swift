@@ -10,13 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    override func viewWillAppear(_ animated: Bool) {
         
         if let cookie = HTTPCookie(properties: [
-            HTTPCookiePropertyKey.name: "key",
-            HTTPCookiePropertyKey.value: "hoge",
+            HTTPCookiePropertyKey.name: "cp",
+            HTTPCookiePropertyKey.value: "xxx",
             HTTPCookiePropertyKey.domain: "sakura.kenmaz.net",
             HTTPCookiePropertyKey.path: "/",
             HTTPCookiePropertyKey.expires: Date.distantFuture,
